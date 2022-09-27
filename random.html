@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random</title>
+    <link rel="stylesheet" href="./styles/navbar.css">
+    <style>
+        #recipe{
+            width: 80%;
+            padding: 20px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-template-rows: auto;
+            gap: 20px;
+            background-color: #f8f8f8;
+        }
+        #recipe>div{
+            border-radius: 20px;
+            background-color: white;
+        }
+        #recipe>div>img{
+            width: 100%;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar"></div>
+    <div id="recipe"></div>
+</body>
+</html>
+<script src="./scripts/import.js" type="module"></script>
+<script type="module">
+    import {getData} from './components/navbar.js'
+
+    window.addEventListener('load',()=>{
+        let url = `https://www.themealdb.com/api/json/v1/1/random.php`
+        for(let i=0;i<15;i++){
+            findRandom(url)
+        }        
+    })
+    let findRandom = async (url)=>{
+        let data = await getData(url)
+        console.log(data)
+        addRecipe(data)
+    }
+    let addRecipe=(arr)=>{
+        const recipe = document.getElementById('recipe');
+        // recipe.innerHTML = null
+        arr.forEach((ele) => {
+            console.log(ele)
+            let {strMeal,strYoutube,strMealThumb,strCategory,strArea} = ele
+            const meal = document.createElement('div');
+            const thumb = document.createElement('img');
+            thumb.src = strMealThumb
+            const name = document.createElement('h2');
+            name.innerText = strMeal
+            const category = document.createElement('h3');
+            category.innerText = `Category: ${strCategory}`
+            const area = document.createElement('h4');
+            area.innerText = `Area: ${strArea}`
+            meal.append(thumb,name,category,area)
+            recipe.append(meal)
+        });
+    }
+</script>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/navbar.css">
+    <style>       
+        .items{
+            width: 100%;
+            margin: auto;
+            padding: 0% 10%;            
+            font-size: 18px;
+            /* border-bottom: 2px solid #ccc; */
+        }
+        
+        .items>div{
+            margin: 20px auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+        .items>p{
+            margin-top: 20px;
+        }
+        .items>div>button{
+            padding: 4px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        }
+        #cuisines{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+        .first_order{
+            background-color: #f8f8f8;
+        }
+        .first_order>h2{
+            margin-top: 20px;
+        }
+        #cuisines>div{
+            width: 15%;
+        }
+        #cuisines>div>img{
+            width: 100%;
+            border-radius: 50%;
+        }
+        #cuisines>div>h3{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <!-- add navbar here -->
+    </div>
+    <div class="items">
+        <p>Home / India / Restaurants</p>
+        <div>
+            <button>items</button>
+            <button>Delivery Time</button>
+            <button>Rating: 4.0+</button>
+            <button>Cuisines</button>
+            <button>More items</button>
+        </div>
+    </div>
+    <div class="items first_order">
+        <h2>Inspiration for your first order</h2>
+        <div id="cuisines">
+            <div>
+                <img src="https://b.zmtcdn.com/data/o2_assets/2b5a5b533473aada22015966f668e30e1633434990.png" alt="">
+                <h3>Paratha</h3>
+            </div>
+            <div>
+                <img src="https://b.zmtcdn.com/data/o2_assets/d0bd7c9405ac87f6aa65e31fe55800941632716575.png" alt="">
+                <h3>Pizza</h3>
+            </div>
+            <div>
+                <img src="https://b.zmtcdn.com/data/dish_images/c953e5ca07150e9a51f8b21102e20f7e1634805157.png" alt="">
+                <h3>Chole Bhature</h3>
+            </div>
+            <div>
+                <img src="https://b.zmtcdn.com/data/o2_assets/fc641efbb73b10484257f295ef0b9b981634401116.png" alt="">
+                <h3>Sandwich</h3>
+            </div>
+            <div>
+                <img src="https://b.zmtcdn.com/data/o2_assets/52eb9796bb9bcf0eba64c643349e97211634401116.png" alt="">
+                <h3>Thali</h3>
+            </div>
+            <div>
+                <img src="https://b.zmtcdn.com/data/dish_images/da37534e55d5f1450ea9771c0627a8d81641644205.png" alt="">
+                <h3>Home Style</h3>
+            </div>
+        </div>        
+    </div>
+</body>
+</html>
+<script src="./scripts/import.js" type="module"></script>

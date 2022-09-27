@@ -1,0 +1,19 @@
+#dish{
+    width: 80%;
+    padding: 20px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #f8f8f8;
+}
+#dish>div{
+    width: 45%;
+}
+#recipe>div>img{
+    width: 100%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    height: 400px;
+    border-radius: 20px;
+}

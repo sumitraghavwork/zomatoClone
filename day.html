@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipe of the Day</title>
+    <link rel="stylesheet" href="./styles/navbar.css">
+    <link rel="stylesheet" href="./styles/recipe.css">
+</head>
+<body>
+    <div id="navbar"></div>
+    <div id="dish"></div>
+</body>
+</html>
+<script src="./scripts/import.js" type="module"></script>
+<script type="module">
+    import {getData,addRecipe,addiframesrc} from './components/navbar.js'
+    
+    import {iframe} from './components/iframe.js'
+    const iframeDiv = document.getElementById('dish');
+    iframeDiv.innerHTML = iframe()
+
+    window.addEventListener('load',()=>{
+        let url = `https://www.themealdb.com/api/json/v1/1/random.php`
+        findRandom(url)
+    })
+    let findRandom=async (url)=>{
+        let data = await getData(url)
+        console.log(data)
+        addRecipe(data)
+    }
+</script>

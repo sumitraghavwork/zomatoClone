@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zomato</title>
+    <link rel="stylesheet" href="../styles/navbar.css">    
+</head>
+<body>
+    <div id="navbar">
+        <div onclick="window.location.href='./index.html'">
+            <img src="https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png" alt="">
+        </div>
+        <div onmouseleave="emptyquery()">
+            <input type="text" id="query" oninput="debounce(main,1000)" placeholder="Search Your Favourite Dishes">
+            <div id="queries"></div>
+        </div>
+        <div>
+            <div onclick="window.location.href='./day.html'">Receipe of the Day</div>
+            <div onclick="window.location.href='./random.html'">Random Receipes</div>
+        </div>
+        <div id="login_status">
+            <div onclick="window.location.href='./login.html'">Log in</div>
+            <div onclick="window.location.href='./signup.html'">Sign up</div>
+        </div>
+    </div>
+    
+</body>
+</html>
+<script>
+    var id;
+    debounce=(fn,delay)=>{
+        if(id){
+            clearTimeout(id)
+        }
+        id = setTimeout(()=>{
+            fn()
+        },delay)
+    }
+    async function main(){
+        let query = document.getElementById('query').value;
+        let data = await getData(query)
+        appendQuery(data)
+    }
+    getData = async (query)=>{
+        let url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`
+        let res = await fetch(url)
+        let data = await res.json()
+        console.log(data.meals)
+        return data.meals
+    }
+    appendQuery=(arr)=>{
+        const queries = document.getElementById('queries');
+        queries.innerHTML = null
+        let len = arr.length
+        len>=3?len=2:len=len
+        queries.parentNode.style.height = `${len*110}px`
+        arr.forEach((ele) => {
+            let {strMeal} = ele
+            const card = document.createElement('div');
+            const name = document.createElement('p');
+            name.innerText = strMeal
+            card.append(name)
+            queries.append(card)
+        });
+    }
+    emptyquery=()=>{
+        const queries = document.getElementById('queries');
+        queries.innerHTML = null
+        queries.parentNode.style.height = '1px'
+        const query = document.getElementById('query');
+        query.value = null
+    }
+</script>
